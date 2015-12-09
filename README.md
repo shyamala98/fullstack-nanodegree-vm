@@ -26,7 +26,7 @@ How to Run Project
 Clone this project from Git to your local machine
 
 <!-- The following section was copied from the Tournament results getting started guide -->
-
+The following is an extract from the getting started guide<br/>
 <b>Using the Vagrant Virtual Machine</b>
 
 The Vagrant VM has PostgreSQL installed and configured, as well as the psql
