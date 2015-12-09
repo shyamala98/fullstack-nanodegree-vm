@@ -57,4 +57,4 @@ select wins_table.playerID as playerID, wins_table.playerName as playerName, win
 from wins_table
 left join matches_table on wins_table.playerID = matches_table.playerID
 left join owm_table on owm_table.playerID=wins_table.playerID
-order by wins desc;
+order by wins desc, owm desc;
