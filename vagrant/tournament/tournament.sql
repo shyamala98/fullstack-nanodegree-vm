@@ -7,6 +7,8 @@
 -- these lines here.
 
 -- Create the tournament database
+-- \c is connect to database called vagrant (You cannot drop a database if you are connected to it.
+-- drop the tournament database if it exists.
 \c vagrant
 drop database if exists tournament;
 create database tournament;
