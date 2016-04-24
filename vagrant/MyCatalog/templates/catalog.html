@@ -1,0 +1,68 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+
+<div class = 'flash'>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+</div>
+
+<div class="row padding-top padding-bottom pagebg">
+	<div class="col-md-1"></div>
+	<div class="col-md-10 padding-none">
+	</div>
+	<div class="col-md-1"></div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+		{% include "addButtons.html" %}
+	</div>
+    <div class="col-md-8">
+		<div class="row tablebg">
+	<div class="col-md-4">
+		{% include "categoriesColumn.html" %}
+	</div>
+
+
+
+	<div class="col-md-8">
+		<div class="row category-header">
+			<div class="col-md-4 padding-none">
+				<h2>Latest Items</h2>
+			</div>
+		</div>
+		{% if items !=[] %}
+		{% for i in items %}
+		<div class="row">
+                <div class="col-md-12 category-list">
+					<a href="{{url_for('showItemDetailsUsingID',category_id = i.category_id, item_name=i.name )}}">
+                    {{i.name}}
+					</a>
+					{% for c in categories %}
+					{% if c.id == i.category_id %}
+						({{c.name}})
+					{% endif %}
+					{% endfor %}
+				</div>
+		</div>
+		{% endfor %}
+    	{% endif %}
+	</div>
+</div>
+	</div>
+	<div class="col-md-2"></div>
+</div>
+
+
+{% include "footer.html" %}
+{% endblock %}
