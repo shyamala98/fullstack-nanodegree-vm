@@ -1,0 +1,24 @@
+
+		<div class="row category-header">
+			<div class="col-md-4 padding-none">
+				<h2>Categories</h2>
+			</div>
+		</div>
+
+		{% for category in categories %}
+		<div class="row">
+			<div class="col-md-12 category-list">
+			<a href = "{{url_for('showItems', category_id = category.id)}}">
+							{{category.name}}
+			</a>
+			</div>
+		</div>
+		{% endfor %}
+		<div class="row padding-top">
+
+		<div class="col-md-10">
+
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+

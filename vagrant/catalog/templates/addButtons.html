@@ -1,0 +1,14 @@
+{%if 'username' in session %}
+    <div class="btn-group-vertical">
+        <a href="{{url_for('newCategory')}}"
+            class="btn btn-primary" id="new-category" role="button">
+                Add Category
+
+        </a>
+        <a href="{{url_for('newItem')}}"
+            class="btn btn-primary" id="new-item" role="button">
+                Add Item
+
+        </a>
+    </div>
+{% endif %}

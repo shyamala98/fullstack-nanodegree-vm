@@ -1,0 +1,81 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div class = 'flash'>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+</div>
+
+<div class="row padding-top padding-bottom pagebg">
+	<div class="col-md-1"></div>
+	<div class="col-md-10 padding-none">
+
+	</div>
+	<div class="col-md-1"></div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-2">
+		{% include "addButtons.html" %}
+	</div>
+    <div class="col-md-8 tablebg">
+		<div class="row tablebg">
+			<div class="col-md-4">
+				{% include "categoriesColumn.html" %}
+			</div>
+
+			<div class="col-md-8">
+				<div class="row category-header">
+					<!--
+					<div class="col-md-4 padding-none">
+						<h2>{{category.name}}</h2>
+						{%if 'username' in session and category.user_id == session['user_id']%}
+						 <a href="{{url_for('editCategory', category_id = category.id ) }}">Edit</a>
+						{%endif%}
+					</div>
+					-->
+					<div class="col-md-8 padding-none">
+
+						{%if 'username' in session and category.user_id == session['user_id']%}
+						 <a href="{{url_for('editCategory', category_id = category.id ) }}"><h2>{{category.name}}</h2></a>
+						{%else%}
+						<h2>{{category.name}}</h2>
+						{%endif%}
+					</div>
+				</div>
+				{% if items !=[] %}
+				{% for i in items %}
+				<div class="row">
+						<div class="col-md-12 category-list">
+							<a href="{{url_for('showItemDetails',category_name = category.name, item_name=i.name )}}">
+							{{i.name}}
+							</a>
+							<!--
+							<a href="{{url_for('editItem', category_id = category.id, item_id=i.id ) }}">Edit</a> |
+							<a href="{{url_for('deleteItem', category_id = category.id, item_id=i.id ) }}">Delete</a>
+							-->
+						</div>
+				</div>
+				{% endfor %}
+				{% endif %}
+
+			</div>
+
+		</div>
+	</div>
+
+</div>
+
+{% include "footer.html" %}
+{% endblock %}
